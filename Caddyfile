@@ -1,4 +1,3 @@
 ysim.xyz {
     reverse_proxy fastapi:8000
 }
-s
