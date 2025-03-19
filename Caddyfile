@@ -1,0 +1,3 @@
+ysim.xyz, api.ysim.xyz, simulate.ysim.xyz {
+    reverse_proxy fastapi:8000
+}

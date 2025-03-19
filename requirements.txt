@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+requests
+web3
+black
+isort
+dotenv

@@ -1,0 +1,21 @@
+services:
+  fastapi:
+    build: .
+    container_name: fastapi_app
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8000
+    # command: bash -c "tail -F anything"
+  
+  caddy:
+    image: caddy:latest
+    container_name: caddy_server
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile-local:/etc/caddy/Caddyfile
