@@ -95,7 +95,7 @@ def get_vnet(chain_id: int) -> GetVNetResponse:
             status_code=404, detail=f"No VNet found for chain_id {chain_id}"
         )
 
-    vnet_url = f"https://api.tenderly.co/api/v1/account/{ACCOUNT_NAME}/project/{PROJECT_NAME}/vnets/{vnet_id}"
+    vnet_url = f"https://api.tenderly.co/api/v1/account/{ACCOUNT_SLUG}/project/{PROJECT_SLUG}/vnets/{vnet_id}"
     response = requests.get(vnet_url, headers=HEADERS)
 
     if response.status_code != 200:
