@@ -22,12 +22,12 @@ services:
       - app_network
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-      - caddy_config:/config
+      # - caddy_data:/data
+      # - caddy_config:/config
 
 networks:
   app_network:
 
-volumes:
-  caddy_data:
-  caddy_config:
+# volumes:
+#   caddy_data:
+#   caddy_config:
