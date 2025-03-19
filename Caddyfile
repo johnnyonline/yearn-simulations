@@ -1,7 +1,7 @@
-ysim.xyz {
+fork.ysim.xyz {
         reverse_proxy fastapi_app:8000
 }
 
-http://ysim.xyz {
-        reverse_proxy fastapi_app:8000
-}
+// :80 {
+//         reverse_proxy fastapi_app:8000
+// }

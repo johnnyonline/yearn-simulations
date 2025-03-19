@@ -1,3 +1,0 @@
-:80 {
-    reverse_proxy fastapi_app:8000
-}
