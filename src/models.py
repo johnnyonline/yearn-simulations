@@ -7,6 +7,7 @@ class CreateVNetRequest(BaseModel):
 
 class VNetResponse(BaseModel):
     vnet_id: str
+    rpc_url: str
 
 
 class GetVNetRequest(BaseModel):

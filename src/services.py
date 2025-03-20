@@ -69,12 +69,13 @@ def create_vnet(request: CreateVNetRequest) -> VNetResponse:
 
     response_data = response.json()
     vnet_id = response_data["id"]
+    rpc_url = response_data["rpcs"][0]["url"]
 
     vnet_mapping = load_vnet_mapping()
     vnet_mapping[str(request.chain_id)] = vnet_id
     save_vnet_mapping(vnet_mapping)
 
-    return VNetResponse(vnet_id=vnet_id)
+    return VNetResponse(vnet_id=vnet_id, rpc_url=rpc_url)
 
 
 def get_vnet(chain_id: int) -> GetVNetResponse:
