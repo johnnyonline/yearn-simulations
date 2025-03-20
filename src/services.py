@@ -1,5 +1,5 @@
 import json
-import time
+import uuid
 
 import requests
 from fastapi import HTTPException
@@ -47,7 +47,7 @@ def create_vnet(request: CreateVNetRequest) -> VNetResponse:
     vnet_url = f"https://api.tenderly.co/api/v1/account/{ACCOUNT_SLUG}/project/{PROJECT_SLUG}/vnets"
 
     payload = {
-        "slug": f"vnet-{request.chain_id}-msig-ci-{time.time()}",
+        "slug": f"vnet-{request.chain_id}-msig-ci-{uuid.uuid4().hex[:12]}",
         "display_name": f"VNet for Chain {request.chain_id}",
         "fork_config": {"network_id": request.chain_id},
         "virtual_network_config": {"chain_config": {"chain_id": request.chain_id}},
