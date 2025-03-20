@@ -1,4 +1,4 @@
-fork.ysim.xyz {
+fork.ysim.xyz, ysim.xyz {
         reverse_proxy fastapi_app:8000
 }
 

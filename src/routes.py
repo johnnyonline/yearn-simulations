@@ -19,14 +19,14 @@ def verify_password(x_password: str = Header(None)) -> None:
 
 
 @router.post(
-    "/create_vnet", response_model=VNetResponse, dependencies=[Depends(verify_password)]
+    "/create", response_model=VNetResponse, dependencies=[Depends(verify_password)]
 )
 def create_vnet_endpoint(request: CreateVNetRequest) -> VNetResponse:
     """
     Creates a Virtual TestNet for a given chain_id - Requires Password
 
     Usage:
-        curl -X POST "http://0.0.0.0:8000/create_vnet" -H "x-password: supersecurepassword" -H "Content-Type: application/json" -d '{"chain_id": 1}'
+        curl -X POST "http://0.0.0.0:8000/create" -H "x-password: supersecurepassword" -H "Content-Type: application/json" -d '{"chain_id": 1}'
 
     Args:
         request (CreateVNetRequest): VNet creation request
@@ -37,10 +37,13 @@ def create_vnet_endpoint(request: CreateVNetRequest) -> VNetResponse:
     return create_vnet(request)
 
 
-@router.get("/get_vnet/{chain_id}", response_model=GetVNetResponse)
+@router.get("/get/{chain_id}", response_model=GetVNetResponse)
 def get_vnet_endpoint(chain_id: int) -> GetVNetResponse:
     """
     Retrieves an existing Virtual TestNet by chain_id - Requires Password
+
+    Usage:
+        curl -v https://0.0.0.0:8000/get/1 --insecure
 
     Args:
         chain_id (int): Chain ID
