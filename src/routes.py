@@ -18,15 +18,16 @@ def verify_password(x_password: str = Header(None)) -> None:
         raise HTTPException(status_code=403, detail="Unauthorized")
 
 
-@router.post(
-    "/create", response_model=VNetResponse, dependencies=[Depends(verify_password)]
-)
+# @router.post(
+#     "/create", response_model=VNetResponse, dependencies=[Depends(verify_password)]
+# )
+@router.post("/create", response_model=VNetResponse)
 def create_vnet_endpoint(request: CreateVNetRequest) -> VNetResponse:
     """
     Creates a Virtual TestNet for a given chain_id - Requires Password
 
     Usage:
-        curl -X POST "http://0.0.0.0:8000/create" -H "x-password: supersecurepassword" -H "Content-Type: application/json" -d '{"chain_id": 1}'
+        curl -X POST "http://0.0.0.0:8000/create" -H "Content-Type: application/json" -d '{"chain_id": 1}'
 
     Args:
         request (CreateVNetRequest): VNet creation request
